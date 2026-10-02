@@ -3,6 +3,7 @@ import "../styles/intro.css";
 
 function Intro({ onEnter }) {
   const [opening, setOpening] = useState(false);
+
   const [origin, setOrigin] = useState({
     x: window.innerWidth / 2,
     y: window.innerHeight / 2,
@@ -38,9 +39,13 @@ function Intro({ onEnter }) {
 
     setOpening(true);
 
+    /*
+      Allow the circle to almost completely fill
+      the screen before revealing the website.
+    */
     setTimeout(() => {
       onEnter();
-    }, 1000);
+    }, 850);
   };
 
   return (
@@ -59,7 +64,7 @@ function Intro({ onEnter }) {
         </h1>
 
         <p className="intro__description">
-          Software Engineering · Artificial Intelligence · Robotics
+          Software Engineering · AI Systems · Robotics
         </p>
 
         <p className="intro__hint">

@@ -15,14 +15,12 @@
 
   z-index: 9999;
 
-  /*
-    Hide the normal browser cursor.
-  */
   cursor: none;
 }
 
 .intro__content {
   position: relative;
+
   z-index: 2;
 
   width: min(1100px, 88%);
@@ -31,15 +29,11 @@
 
   color: #f5f7fa;
 
-  transition:
-    opacity 0.35s ease,
-    transform 0.5s ease;
-
-  /*
-    Prevent text itself from intercepting
-    the click.
-  */
   pointer-events: none;
+
+  transition:
+    opacity 0.4s ease,
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .intro__eyebrow {
@@ -47,17 +41,21 @@
 
   font-size: 0.75rem;
   font-weight: 600;
+
   letter-spacing: 0.24em;
 
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .intro__name {
   margin: 0;
 
   font-size: clamp(3.5rem, 9vw, 8.5rem);
+
   font-weight: 500;
+
   line-height: 0.95;
+
   letter-spacing: -0.055em;
 }
 
@@ -66,11 +64,12 @@
 }
 
 .intro__description {
+  max-width: 620px;
+
   margin: 2rem auto 0;
 
-  max-width: 600px;
-
   font-size: clamp(0.95rem, 1.6vw, 1.2rem);
+
   line-height: 1.7;
 
   color: rgba(255, 255, 255, 0.62);
@@ -79,17 +78,19 @@
 .intro__hint {
   margin-top: 3rem;
 
-  font-size: 0.78rem;
-  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+
+  letter-spacing: 0.18em;
+
   text-transform: uppercase;
 
-  color: rgba(255, 255, 255, 0.38);
+  color: rgba(255, 255, 255, 0.32);
 }
 
 
-/* ==============================
-   Custom circular cursor
-============================== */
+/* --------------------------------
+   CUSTOM CURSOR
+-------------------------------- */
 
 .intro__cursor {
   position: fixed;
@@ -97,27 +98,26 @@
   width: 42px;
   height: 42px;
 
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+
   border-radius: 50%;
 
   transform: translate(-50%, -50%);
 
-  z-index: 10;
+  z-index: 20;
 
   pointer-events: none;
 
   transition:
+    opacity 0.2s ease,
     width 0.2s ease,
-    height 0.2s ease,
-    background 0.2s ease;
-
-  backdrop-filter: invert(1);
+    height 0.2s ease;
 }
 
 
-/* ==============================
-   Circular reveal
-============================== */
+/* --------------------------------
+   CIRCLE REVEAL
+-------------------------------- */
 
 .intro__reveal {
   position: fixed;
@@ -127,24 +127,35 @@
 
   border-radius: 50%;
 
+  /*
+   * Make this the SAME color as your
+   * normal site's background.
+   */
   background: #f5f7fa;
 
-  transform: translate(-50%, -50%) scale(0);
+  transform:
+    translate(-50%, -50%)
+    scale(0);
 
-  z-index: 5;
+  z-index: 10;
 
   pointer-events: none;
 }
 
 .intro--opening .intro__reveal {
-  animation: intro-circle-expand 1s
+  animation:
+    intro-circle-expand
+    0.95s
     cubic-bezier(0.76, 0, 0.24, 1)
     forwards;
 }
 
 .intro--opening .intro__content {
   opacity: 0;
-  transform: scale(0.96);
+
+  transform:
+    scale(0.96)
+    translateY(-8px);
 }
 
 .intro--opening .intro__cursor {
@@ -153,18 +164,22 @@
 
 @keyframes intro-circle-expand {
   from {
-    transform: translate(-50%, -50%) scale(0);
+    transform:
+      translate(-50%, -50%)
+      scale(0);
   }
 
   to {
-    transform: translate(-50%, -50%) scale(220);
+    transform:
+      translate(-50%, -50%)
+      scale(220);
   }
 }
 
 
-/* ==============================
-   Mobile
-============================== */
+/* --------------------------------
+   MOBILE
+-------------------------------- */
 
 @media (max-width: 700px) {
   .intro__name {
@@ -175,9 +190,6 @@
     max-width: 330px;
   }
 
-  /*
-    No custom cursor on touch devices.
-  */
   .intro__cursor {
     display: none;
   }
@@ -188,9 +200,9 @@
 }
 
 
-/* ==============================
-   Reduced motion accessibility
-============================== */
+/* --------------------------------
+   ACCESSIBILITY
+-------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {
   .intro__content {

@@ -13,6 +13,8 @@ import Education from './sections/Education'
 import Leadership from './sections/Leadership'
 import Contact from './sections/Contact'
 
+import './styles/page-transition.css'
+
 export default function App() {
   const [entered, setEntered] = useState(false)
 
@@ -22,20 +24,26 @@ export default function App() {
         <Intro onEnter={() => setEntered(true)} />
       )}
 
-      <Navbar />
+      <div
+        className={`portfolio-shell ${
+          entered ? 'portfolio-shell--visible' : ''
+        }`}
+      >
+        <Navbar />
 
-      <main>
-        <Hero />
-        <About />
-        <Experience />
-        <Projects />
-        <Skills />
-        <Education />
-        <Leadership />
-        <Contact />
-      </main>
+        <main>
+          <Hero />
+          <About />
+          <Experience />
+          <Projects />
+          <Skills />
+          <Education />
+          <Leadership />
+          <Contact />
+        </main>
 
-      <Footer />
+        <Footer />
+      </div>
     </>
   )
 }

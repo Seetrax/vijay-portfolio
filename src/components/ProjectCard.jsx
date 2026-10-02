@@ -1,26 +1,67 @@
-const asset = (p) => `${import.meta.env.BASE_URL}${p}`
-
 export default function ProjectCard({ project }) {
-  const { title, meta, description, tags, thumbnail, video, links } = project
   return (
-    <article className="card">
-      {video ? (
-        <video src={asset(video)} poster={asset(thumbnail)} controls muted loop playsInline preload="none" />
-      ) : (
-        <img className="thumb" src={asset(thumbnail)} alt={`${title} preview`} loading="lazy"
-             onError={(e) => (e.currentTarget.style.display = 'none')} />
-      )}
-      <div className="card-body">
-        <h3>{title}</h3>
-        <p className="muted" style={{ margin: '4px 0 12px', fontSize: '0.92rem' }}>{meta}</p>
-        <p>{description}</p>
-        <div className="badges">{tags.map((t) => <span key={t} className="badge">{t}</span>)}</div>
-        {links?.length > 0 && (
-          <p style={{ marginTop: 16, marginBottom: 0 }}>
-            {links.map((l) => <a key={l.url} href={l.url} target="_blank" rel="noreferrer" style={{ marginRight: 16 }}>{l.label}</a>)}
+    <article className="project-card">
+      <div className="project-card__number">
+        {project.number}
+      </div>
+
+      <div className="project-card__content">
+        <header>
+          <p className="project-card__subtitle">
+            {project.subtitle}
           </p>
-        )}
+
+          <h3>
+            {project.title}
+          </h3>
+        </header>
+
+        <p className="project-card__description">
+          {project.description}
+        </p>
+
+        <div className="project-card__details">
+          <div>
+            <span>Problem</span>
+            <p>{project.problem}</p>
+          </div>
+
+          <div>
+            <span>Approach</span>
+            <p>{project.approach}</p>
+          </div>
+
+          <div>
+            <span>Result</span>
+            <p>{project.result}</p>
+          </div>
+        </div>
+
+        <div className="project-card__footer">
+          <div className="project-card__tech">
+            {project.technologies.map((tech) => (
+              <span key={tech}>
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          {project.links && (
+            <div className="project-card__links">
+              {project.links.map((link) => (
+                <a
+                  key={link.url}
+                  href={link.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {link.label} ↗
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </article>
-  )
+  );
 }
