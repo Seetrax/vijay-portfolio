@@ -12,6 +12,7 @@ import Skills from './sections/Skills'
 import Education from './sections/Education'
 import Leadership from './sections/Leadership'
 import Contact from './sections/Contact'
+import Timeline from './sections/Timeline'
 
 import './styles/page-transition.css'
 
@@ -34,10 +35,11 @@ export default function App() {
         <main>
           <Hero />
           <About />
+          <Education />
+          <Timeline />
           <Experience />
           <Projects />
           <Skills />
-          <Education />
           <Leadership />
           <Contact />
         </main>

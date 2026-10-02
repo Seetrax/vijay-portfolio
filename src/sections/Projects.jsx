@@ -11,7 +11,7 @@ export default function Projects() {
     >
       <div className="projects-section__heading">
         <p className="section-kicker">
-          SELECTED WORK
+          Projects
         </p>
 
         <h2>
@@ -20,11 +20,7 @@ export default function Projects() {
           actually built.
         </h2>
 
-        <p>
-          Selected systems and research projects,
-          presented around the problem I was trying
-          to solve rather than as résumé bullet points.
-        </p>
+       
       </div>
 
       <div className="projects-list">

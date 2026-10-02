@@ -1,6 +1,9 @@
 export default function ExperienceCard({ experience }) {
   return (
-    <article className="experience-card">
+    <article
+      className="experience-card"
+      id={`experience-${experience.id}`}
+    >
 
       <header className="experience-card__header">
         <div>

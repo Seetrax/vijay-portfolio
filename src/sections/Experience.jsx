@@ -21,9 +21,7 @@ export default function Experience() {
         </h2>
 
         <p>
-          A closer look at the problems, architecture,
-          and engineering decisions behind my work —
-          beyond the bullet points on my résumé.
+          Problems architecture, and engineering decisions behind my work
         </p>
       </div>
 
