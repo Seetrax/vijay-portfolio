@@ -8,7 +8,7 @@ export const experience = [
 
     location: "Paris, France",
 
-    period: "Dec 2025 — Jun 2026",
+    period: "Dec 2025 - Jun 2026",
 
     headline:
       "Building the infrastructure behind a production enterprise AI gateway.",
@@ -85,13 +85,13 @@ export const experience = [
   {
     id: "tcs-research",
 
-    company: "TCS Research",
+    company: "Tata Research",
 
     role: "Software Engineer Intern",
 
     location: "Bangalore, India",
 
-    period: "Jun 2024 — Aug 2024",
+    period: "Jun 2024 - Aug 2024",
 
     headline:
       "Exploring how language models can orchestrate tools, specialist models, and structured knowledge.",

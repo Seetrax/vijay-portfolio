@@ -14,7 +14,7 @@ export const timeline = [
     id: "tcs-research",
     type: "experience",
     title: "Software Engineer Intern",
-    organization: "TCS Research",
+    organization: "Tata Research",
     start: 2024.42,
     end: 2024.67,
     startLabel: "Jun 2024",

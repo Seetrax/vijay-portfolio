@@ -20,7 +20,7 @@ export default function Timeline() {
 
     {
   id: "tcs",
-  title: "TCS Research",
+  title: "Tata Research",
   subtitle: "Software Engineer Intern",
   dates: "Jun — Aug 2024",
   position: 58,
