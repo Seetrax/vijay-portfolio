@@ -7,7 +7,6 @@ import {
 
 import Intro from "./components/Intro";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
 import ExperiencePage from "./pages/ExperiencePage";
@@ -55,7 +54,6 @@ export default function App() {
           />
         </Routes>
 
-        <Footer />
       </div>
     </HashRouter>
   );

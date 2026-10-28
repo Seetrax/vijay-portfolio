@@ -54,10 +54,6 @@ function Intro({ onEnter }) {
       onClick={handleEnter}
     >
       <div className="intro__content">
-        <p className="intro__eyebrow">
-          PORTFOLIO / 2026
-        </p>
-
         <h1 className="intro__name">
           Vijay
           <span>Ramakrishnan</span>
