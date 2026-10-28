@@ -3,6 +3,7 @@ export const experience = [
     id: "magic-lemp",
 
     company: "Magic LEMP",
+    logo: "assets/images/projects/magic-lemp/image.png",
 
     role: "AI Engineer Intern",
 
@@ -47,7 +48,7 @@ export const experience = [
 
     impact: {
       label: "Retrieval optimization",
-      value: "25–52s → 1.6–1.8s",
+      value: "52s → 1.8s",
       description:
         "High-cardinality permission filtering over 2M vectors and filters containing up to 1M file identifiers was reduced by more than an order of magnitude after introducing indexed filtering.",
     },
@@ -86,6 +87,7 @@ export const experience = [
     id: "tcs-research",
 
     company: "Tata Research",
+    logo: "assets/images/projects/tata-research/image.png",
 
     role: "Software Engineer Intern",
 
@@ -130,7 +132,7 @@ export const experience = [
 
     impact: {
       label: "PEOA evaluation",
-      value: "73.68% / 74.13%",
+      value: "74.13%",
       description:
         "Exact Match on the MathComp and ChemProc evaluation datasets in the reported PEOA experiments.",
     },

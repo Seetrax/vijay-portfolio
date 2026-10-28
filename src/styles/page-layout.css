@@ -1,0 +1,45 @@
+/* Dedicated Experience / Projects pages */
+
+.page-layout {
+  min-height: 100vh;
+}
+
+
+/*
+ * The section CSS already has large vertical padding
+ * because these sections originally lived halfway
+ * down the homepage.
+ *
+ * On a standalone page we don't need nearly as much
+ * space above the title.
+ */
+
+.page-layout .experience-section,
+.page-layout .projects-section {
+  padding-top: 5rem;
+}
+
+
+/*
+ * Individual timeline links scroll directly to cards.
+ * This prevents the sticky navbar from covering the
+ * beginning of the selected item.
+ */
+
+.page-layout .experience-card,
+.page-layout .project-card {
+  scroll-margin-top: 110px;
+}
+
+
+@media (max-width: 750px) {
+  .page-layout .experience-section,
+  .page-layout .projects-section {
+    padding-top: 3.5rem;
+  }
+
+  .page-layout .experience-card,
+  .page-layout .project-card {
+    scroll-margin-top: 90px;
+  }
+}

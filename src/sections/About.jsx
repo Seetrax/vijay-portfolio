@@ -9,8 +9,8 @@ export default function About() {
 
         <p>
           Most of my interests sit somewhere between software engineering, AI, and robotics. I enjoy
-          working on systems where there is something interesting happening under the hood — search,
-          agents, learning, simulation, or just a well-designed piece of software.
+          working on systems where there is something interesting happening under the hood such as search,
+          agents, learning, simulation or just a well-designed piece of software.
         </p>
 
         <p>

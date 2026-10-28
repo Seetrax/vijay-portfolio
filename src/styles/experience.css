@@ -57,6 +57,23 @@
   padding-top: 2rem;
 }
 
+.experience-card__header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.experience-card__logo {
+  width: 88px;
+  height: 88px;
+  flex-shrink: 0;
+  object-fit: contain;
+  padding: 8px;
+  background: #ffffff;
+  border-radius: 12px;
+}
+
 .experience-card__period {
   margin: 0 0 0.6rem;
 

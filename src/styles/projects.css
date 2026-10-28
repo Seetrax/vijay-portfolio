@@ -70,6 +70,16 @@
   opacity: 0.7;
 }
 
+.project-card__video {
+  display: block;
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  margin-top: 2rem;
+  border-radius: 12px;
+  background: #0b1324;
+}
+
 .project-card__details {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

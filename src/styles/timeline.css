@@ -1,59 +1,139 @@
+/* ======================================================
+   OUTER TIMELINE
+====================================================== */
+
 .mini-timeline {
-  width: min(1200px, 90%);
+  position: relative;
+  isolation: isolate;
+  width: min(1050px, 88%);
+
   margin: 0 auto;
-  padding: 1rem 0 5rem;
+
+  padding:
+    1rem 0
+    5rem;
 }
+
+.mini-timeline__background {
+  position: absolute;
+  inset: 1rem 0 5rem;
+  width: 100%;
+  height: calc(100% - 6rem);
+  object-fit: cover;
+  border-radius: 18px;
+  pointer-events: none;
+  z-index: -2;
+}
+
+.mini-timeline::before {
+  content: "";
+  position: absolute;
+  inset: 1rem 0 5rem;
+  border-radius: 18px;
+  background: rgba(11, 19, 36, 0.65);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/*
+ * This subtle panel makes the timeline
+ * feel like an intentional component
+ * rather than a line floating in space.
+ */
 
 .mini-timeline__scroll {
   overflow-x: auto;
   overflow-y: hidden;
 
-  padding: 6rem 0;
+  padding:
+    6.5rem
+    2rem;
 
-  scrollbar-width: thin;
-  scrollbar-color:
-    rgba(255, 255, 255, 0.15)
-    transparent;
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.07);
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.025),
+      rgba(255, 255, 255, 0.01)
+    );
+
+  scrollbar-width: none;
 }
+
+
+.mini-timeline__scroll::-webkit-scrollbar {
+  display: none;
+}
+
 
 .mini-timeline__inner {
+  --timeline-axis: 98px;
   position: relative;
 
-  min-width: 1100px;
+  min-width: 850px;
+
   height: 150px;
 
-  margin: 0 40px;
+  margin: 0 20px;
 }
 
-/* Years */
+
+/* ======================================================
+   YEAR LABELS
+====================================================== */
 
 .mini-timeline__years {
   position: absolute;
 
-  top: 62px;
+  top: 60px;
 
   left: 0;
   right: 0;
+
+  z-index: 1;
 }
+
 
 .mini-timeline__years span {
   position: absolute;
 
   transform:
     translateX(-50%)
-    translateY(5px);
+    translateY(8px);
 
-  font-size: 0.65rem;
-  letter-spacing: 0.08em;
+  padding:
+    0.32rem
+    0.55rem;
 
-  color: rgba(255, 255, 255, 0.28);
+  border-radius: 100px;
+
+  background:
+    rgba(255, 255, 255, 0.035);
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.07);
+
+  font-size: 0.72rem;
+  font-weight: 600;
+
+  letter-spacing: 0.06em;
+
+  color:
+    rgba(255, 255, 255, 0.38);
 
   opacity: 0;
 
   transition:
-    opacity 0.5s ease 0.2s,
-    transform 0.5s ease 0.2s;
+    opacity 0.45s ease 0.2s,
+    transform 0.45s ease 0.2s;
 }
+
 
 .mini-timeline--visible
 .mini-timeline__years span {
@@ -64,56 +144,74 @@
     translateY(0);
 }
 
-/* Timeline line */
+
+/* ======================================================
+   MAIN LINE
+====================================================== */
 
 .mini-timeline__line-base {
   position: absolute;
 
-  top: 88px;
+  top: calc(var(--timeline-axis) - 2px);
 
   left: 0;
   right: 0;
 
-  height: 1px;
+  height: 4px;
 
-  background: rgba(255, 255, 255, 0.08);
+  border-radius: 100px;
+
+  background:
+    rgba(255, 255, 255, 0.07);
 }
+
 
 .mini-timeline__line-progress {
   position: absolute;
 
-  top: 88px;
+  top: calc(var(--timeline-axis) - 2px);
 
   left: 0;
 
   width: 100%;
-  height: 1px;
+  height: 4px;
 
-  background: rgba(255, 255, 255, 0.65);
+  border-radius: 100px;
+
+  background: #aec8ff;
+  box-shadow: 0 0 0 2px rgba(11, 19, 36, 0.85);
 
   transform: scaleX(0);
 
-  transform-origin: left center;
+  transform-origin:
+    left center;
 
   transition:
     transform
     1.25s
-    cubic-bezier(0.22, 1, 0.36, 1);
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
 }
+
 
 .mini-timeline--visible
 .mini-timeline__line-progress {
   transform: scaleX(1);
 }
 
-/* Events */
+
+/* ======================================================
+   EVENTS
+====================================================== */
 
 .mini-timeline__event {
   position: absolute;
 
-  top: 88px;
-
-  transform: translateX(-50%);
+  top: var(--timeline-axis);
 
   margin: 0;
   padding: 0;
@@ -123,32 +221,35 @@
   background: none;
 
   color: inherit;
+
   font-family: inherit;
 
   cursor: pointer;
 
-  z-index: 3;
+  z-index: 5;
 
   opacity: 0;
 
+  transform:
+    translateX(-50%)
+    translateY(10px);
+
   transition:
-    opacity 0.55s ease var(--event-delay),
-    transform 0.55s
-      cubic-bezier(0.22, 1, 0.36, 1)
+    opacity
+      0.5s ease
+      var(--event-delay),
+
+    transform
+      0.55s
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      )
       var(--event-delay);
 }
 
-.mini-timeline__event--top {
-  transform:
-    translateX(-50%)
-    translateY(8px);
-}
-
-.mini-timeline__event--bottom {
-  transform:
-    translateX(-50%)
-    translateY(-8px);
-}
 
 .mini-timeline--visible
 .mini-timeline__event {
@@ -159,7 +260,45 @@
     translateY(0);
 }
 
-/* Dot */
+
+/* ======================================================
+   CONNECTING STEM
+====================================================== */
+
+.mini-timeline__stem {
+  position: absolute;
+
+  left: 50%;
+
+  width: 1px;
+
+  background:
+    rgba(255, 255, 255, 0.18);
+
+  transform:
+    translateX(-50%);
+}
+
+
+.mini-timeline__event--top
+.mini-timeline__stem {
+  height: 27px;
+
+  bottom: 4px;
+}
+
+
+.mini-timeline__event--bottom
+.mini-timeline__stem {
+  height: 27px;
+
+  top: 4px;
+}
+
+
+/* ======================================================
+   DOT
+====================================================== */
 
 .mini-timeline__dot {
   position: absolute;
@@ -167,90 +306,148 @@
   left: 50%;
   top: 0;
 
-  width: 11px;
-  height: 11px;
+  width: 14px;
+  height: 14px;
 
   transform:
     translate(-50%, -50%);
 
   border-radius: 50%;
 
-  z-index: 4;
+  z-index: 6;
+
+  box-shadow:
+    0 0 0 5px
+    rgba(255, 255, 255, 0.025);
 
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease;
 }
 
+
+/* Education */
+
 .mini-timeline__dot--education {
   background: #f5f7fa;
-  border: 2px solid #f5f7fa;
+
+  border:
+    2px solid
+    #f5f7fa;
 }
+
+
+/* Experience */
 
 .mini-timeline__dot--experience {
   background: #7ea7ff;
-  border: 2px solid #7ea7ff;
+
+  border:
+    2px solid
+    #7ea7ff;
 }
 
-/* Event labels */
+
+/* ======================================================
+   EVENT CARD
+====================================================== */
 
 .mini-timeline__event-content {
   position: absolute;
 
   left: 50%;
 
-  width: 160px;
+  width: 205px;
 
-  transform: translateX(-50%);
+  transform:
+    translateX(-50%);
 
   display: flex;
   flex-direction: column;
 
-  gap: 0.18rem;
+  gap: 0.24rem;
+
+  padding:
+    0.8rem
+    0.9rem;
+
+  border-radius: 10px;
+
+  background:
+    rgba(11, 19, 36, 0.82);
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.07);
+
+  backdrop-filter: blur(8px);
 
   text-align: center;
 
   pointer-events: none;
 
-  transition: transform 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
 }
+
+
+/* Above */
 
 .mini-timeline__event--top
 .mini-timeline__event-content {
-  bottom: 28px;
+  bottom: 35px;
 }
+
+
+/* Below */
 
 .mini-timeline__event--bottom
 .mini-timeline__event-content {
-  top: 28px;
+  top: 35px;
 }
+
+
+/* ======================================================
+   EVENT TEXT
+====================================================== */
 
 .mini-timeline__event-content strong {
-  font-size: 0.86rem;
-  font-weight: 600;
+  font-size: 1rem;
 
-  color: rgba(255, 255, 255, 0.92);
+  font-weight: 650;
 
-  line-height: 1.2;
+  line-height: 1.15;
+
+  color:
+    rgba(255, 255, 255, 0.96);
 }
+
 
 .mini-timeline__subtitle {
-  font-size: 0.68rem;
-
-  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.76rem;
 
   line-height: 1.3;
+
+  color:
+    rgba(255, 255, 255, 0.58);
 }
+
 
 .mini-timeline__event-content small {
-  margin-top: 0.1rem;
+  margin-top: 0.08rem;
 
-  font-size: 0.62rem;
+  font-size: 0.68rem;
 
-  color: rgba(255, 255, 255, 0.3);
+  color:
+    rgba(255, 255, 255, 0.36);
 }
 
-/* Hover */
+
+/* ======================================================
+   HOVER
+====================================================== */
 
 @media (hover: hover) and (pointer: fine) {
 
@@ -258,57 +455,115 @@
   .mini-timeline__dot {
     transform:
       translate(-50%, -50%)
-      scale(1.7);
+      scale(1.4);
 
     box-shadow:
-      0 0 0 5px
-      rgba(255, 255, 255, 0.05);
+      0 0 0 7px
+      rgba(126, 167, 255, 0.09);
   }
+
+
+  .mini-timeline__event:hover
+  .mini-timeline__event-content {
+    border-color:
+      rgba(255, 255, 255, 0.18);
+
+    background:
+      rgba(20, 29, 48, 0.96);
+  }
+
 
   .mini-timeline__event--top:hover
   .mini-timeline__event-content {
     transform:
       translateX(-50%)
-      translateY(-3px);
+      translateY(-4px);
   }
+
 
   .mini-timeline__event--bottom:hover
   .mini-timeline__event-content {
     transform:
       translateX(-50%)
-      translateY(3px);
+      translateY(4px);
   }
 }
 
-/* Mobile */
+
+/* ======================================================
+   KEYBOARD
+====================================================== */
+
+.mini-timeline__event:focus-visible {
+  outline: none;
+}
+
+
+.mini-timeline__event:focus-visible
+.mini-timeline__event-content {
+  border-color:
+    rgba(126, 167, 255, 0.75);
+}
+
+
+/* ======================================================
+   MOBILE
+====================================================== */
 
 @media (max-width: 750px) {
+
+  .mini-timeline__background,
+  .mini-timeline::before {
+    inset: 0 0 4rem;
+    border-radius: 0;
+  }
+
+  .mini-timeline__background {
+    height: calc(100% - 4rem);
+  }
 
   .mini-timeline {
     width: 100%;
 
-    padding: 0 0 4rem;
+    padding:
+      0 0
+      4rem;
   }
 
+
   .mini-timeline__scroll {
+    border-radius: 0;
+
+    border-left: none;
+    border-right: none;
+
     padding-left: 5%;
     padding-right: 5%;
   }
 
+
   .mini-timeline__inner {
-    min-width: 1000px;
+    min-width: 800px;
   }
 }
 
-/* Reduced motion */
+
+/* ======================================================
+   REDUCED MOTION
+====================================================== */
 
 @media (prefers-reduced-motion: reduce) {
+
+  .mini-timeline__background {
+    display: none;
+  }
 
   .mini-timeline__line-progress {
     transform: scaleX(1);
 
     transition: none;
   }
+
 
   .mini-timeline__event,
   .mini-timeline__years span {
@@ -317,8 +572,9 @@
     transition: none;
   }
 
-  .mini-timeline__event--top,
-  .mini-timeline__event--bottom {
-    transform: translateX(-50%);
+
+  .mini-timeline__event {
+    transform:
+      translateX(-50%);
   }
 }

@@ -1,6 +1,9 @@
 export default function ProjectCard({ project }) {
   return (
-    <article className="project-card">
+    <article
+      className="project-card"
+      id={`project-${project.id}`}
+    >
       <div className="project-card__number">
         {project.number}
       </div>
@@ -19,6 +22,19 @@ export default function ProjectCard({ project }) {
         <p className="project-card__description">
           {project.description}
         </p>
+
+        {project.video && (
+          <video
+            className="project-card__video"
+            src={`${import.meta.env.BASE_URL}${project.video}`}
+            controls
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            aria-label={`${project.title} demonstration`}
+          />
+        )}
 
         <div className="project-card__details">
           <div>

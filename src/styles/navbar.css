@@ -1,0 +1,196 @@
+.site-navbar {
+  position: sticky;
+  top: 0;
+
+  width: 100%;
+
+  z-index: 1000;
+
+  background: rgba(11, 19, 36, 0.88);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.08);
+}
+
+.site-navbar__inner {
+  width: min(1200px, 90%);
+
+  margin: 0 auto;
+
+  min-height: 74px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 2rem;
+}
+
+
+/* -----------------------------
+   Brand
+----------------------------- */
+
+.site-navbar__brand {
+  flex-shrink: 0;
+
+  color: #f5f7fa;
+
+  text-decoration: none;
+
+  font-family: var(--serif);
+
+  font-size: 1.15rem;
+  font-weight: 600;
+
+  letter-spacing: -0.02em;
+
+  transition: opacity 0.2s ease;
+}
+
+.site-navbar__brand:hover {
+  opacity: 0.7;
+}
+
+
+/* -----------------------------
+   Navigation
+----------------------------- */
+
+.site-navbar__links {
+  display: flex;
+
+  align-items: center;
+
+  gap: clamp(1rem, 2vw, 2rem);
+}
+
+
+/*
+ * Make links AND buttons look identical.
+ */
+
+.site-navbar__links a,
+.site-navbar__links button {
+  position: relative;
+
+  margin: 0;
+  padding: 0.35rem 0;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  font: inherit;
+
+  font-size: 0.85rem;
+
+  color: rgba(255, 255, 255, 0.58);
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease;
+}
+
+
+/* Small underline */
+
+.site-navbar__links a::after,
+.site-navbar__links button::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 1px;
+
+  background: rgba(255, 255, 255, 0.85);
+
+  transform: scaleX(0);
+
+  transform-origin: right;
+
+  transition:
+    transform 0.3s
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+.site-navbar__links a:hover,
+.site-navbar__links button:hover {
+  color: #ffffff;
+}
+
+
+.site-navbar__links a:hover::after,
+.site-navbar__links button:hover::after {
+  transform: scaleX(1);
+
+  transform-origin: left;
+}
+
+
+/* Current page */
+
+.site-navbar__links a.active {
+  color: #ffffff;
+}
+
+.site-navbar__links a.active::after {
+  transform: scaleX(1);
+}
+
+
+/* -----------------------------
+   Mobile
+----------------------------- */
+
+@media (max-width: 900px) {
+
+  .site-navbar__inner {
+    min-height: 66px;
+  }
+
+  .site-navbar__links {
+    gap: 1rem;
+  }
+
+  .site-navbar__links button:nth-of-type(3),
+  .site-navbar__links button:nth-of-type(4) {
+    display: none;
+  }
+}
+
+
+@media (max-width: 700px) {
+
+  .site-navbar__inner {
+    width: 92%;
+  }
+
+  .site-navbar__brand {
+    font-size: 1rem;
+  }
+
+  .site-navbar__links {
+    gap: 1rem;
+  }
+
+  .site-navbar__links button {
+    display: none;
+  }
+
+  .site-navbar__links a {
+    font-size: 0.8rem;
+  }
+}

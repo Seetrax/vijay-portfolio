@@ -1,146 +1,33 @@
 export const projects = [
   {
-    id: "llm-gateway",
-
+    id: "treasure-search",
     number: "01",
 
-    title: "LLM Gateway",
-
-    subtitle:
-      "Enterprise RAG infrastructure",
-
-    description:
-      "A production-oriented AI platform connecting enterprise documents, vector retrieval, LLM agents, and OpenAI-compatible APIs. I worked across the ingestion, permission, retrieval, agent, and backend layers rather than on a single isolated service.",
-
-    problem:
-      "How do you make continuously changing enterprise documents searchable by LLMs without violating the access rules of the original document system?",
-
-    approach:
-      "SharePoint state is synchronized through asynchronous pipelines, documents are normalized into a common chunk representation, permissions are encoded directly into vector payloads, and retrieval applies authorization during semantic search.",
-
-    result:
-      "The system supported 13 document formats and permission-aware RAG across organization and user collections. Indexing high-cardinality filter fields reduced a 2M-vector permission benchmark from tens of seconds to roughly 1.6–1.8 seconds.",
-
-    technologies: [
-      "Python",
-      "Django",
-      "Celery",
-      "Redis",
-      "Qdrant",
-      "gRPC",
-      "Microsoft Graph",
-      "Docker",
-    ],
-
-    image:
-      "/assets/images/projects/magic-lemp/thumbnail.webp",
-  },
-
-  {
-    id: "peoa",
-
-    number: "02",
-
-    title: "PEOA",
-
-    subtitle:
-      "LLM orchestration for engineering workflows",
-
-    description:
-      "A research framework exploring how an AI orchestrator can solve complex process-engineering tasks by decomposing them into smaller problems and coordinating specialized models, computational tools, and structured knowledge retrieval.",
-
-    problem:
-      "A single language model may lack the domain knowledge, deterministic computation, and multi-step execution needed for specialized engineering workflows.",
-
-    approach:
-      "PEOA constructs solution trajectories consisting of subtasks and tool invocations. Graph-based retrieval supplies structured domain context while iterative error handling allows failed steps to be identified and revised.",
-
-    result:
-      "Reported experiments achieved 73.68% Exact Match on MathComp and 74.13% on ChemProc while enabling analysis of planning, tool selection, invocation, retrieval, and error-handling behavior.",
-
-    technologies: [
-      "Python",
-      "LLMs",
-      "Graph RAG",
-      "Neo4j",
-      "LlamaIndex",
-      "Tool Learning",
-    ],
-
-    image:
-      "/assets/images/projects/tata-research/peoa.webp",
-
-    links: [
-      {
-        label: "Paper",
-        url: "https://arxiv.org/abs/2408.14494",
-      },
-    ],
-  },
-
-  {
-    id: "patexpert",
-
-    number: "03",
-
-    title: "PatExpert",
-
-    subtitle:
-      "Multi-agent patent intelligence",
-
-    description:
-      "A conversational multi-agent framework for automating patent analysis workflows using a central orchestrator, specialized expert agents, structured knowledge retrieval, and automated critique.",
-
-    problem:
-      "Patent workflows span very different tasks — classification, summarization, claim generation, prior-art analysis, acceptance prediction, and cross-document reasoning — making one monolithic model difficult to specialize.",
-
-    approach:
-      "A Meta-Llama-based meta-agent interprets the request and delegates subtasks to specialist agents. Graph retrieval supports multi-patent analysis while judge agents evaluate responses and return feedback for iterative refinement.",
-
-    result:
-      "The architecture unified multiple patent-analysis workflows behind one conversational interface while preserving explicit specialization and evaluation at each stage.",
-
-    technologies: [
-      "Python",
-      "Meta-Llama",
-      "GPT-4o",
-      "Graph RAG",
-      "Multi-Agent Systems",
-      "LLM-as-a-Judge",
-    ],
-
-    image:
-      "/assets/images/projects/tata-research/patexpert.webp",
-
-    links: [
-      {
-        label: "Paper",
-        url: "https://arxiv.org/abs/2409.19006",
-      },
-    ],
-  },
-
-  {
-    id: "treasure-search",
-
-    number: "04",
-
     title: "Autonomous Treasure Search",
+    video: "assets/images/projects/treasure-search/navigation.mp4",
+    links: [
+      {
+        label: "View on GitHub",
+        url: "https://github.com/Seetrax/Autonomous-Rover-Treasure-Search",
+      },
+    ],
 
     subtitle:
       "Multi-sensor mobile manipulation",
 
+    period: "Aug 2025 — Dec 2025",
+
     description:
-      "A simulated autonomous robot that combines perception, learned control, Ackermann steering, and a 4-DOF manipulator to locate and retrieve hidden targets.",
+      "An autonomous mobile manipulator that combines learned perception, vehicle control, and robotic manipulation to locate and retrieve hidden targets in simulation.",
 
     problem:
-      "The robot had to convert noisy sensor measurements into target estimates while coordinating navigation and manipulation.",
+      "The robot had to estimate the location of a target from noisy sensor measurements while coordinating navigation and manipulation.",
 
     approach:
-      "I combined ROS2 and CoppeliaSim with an MLP for distance estimation and CNN imitation-learning controllers for steering and arm positioning.",
+      "Built a ROS2 and CoppeliaSim perception-and-control pipeline integrating a metal detector, Ackermann-steered vehicle, and 4-DOF robotic arm. Trained an MLP for distance estimation and CNN-based imitation-learning controllers for steering and arm positioning.",
 
     result:
-      "The complete pipeline connected learned perception and control with a simulated mobile manipulator capable of autonomous target localization and retrieval.",
+      "The complete system performed autonomous target localization and retrieval, with the learned localization model achieving 0.59 MSE.",
 
     technologies: [
       "ROS2",
@@ -148,6 +35,7 @@ export const projects = [
       "PyTorch",
       "CNN",
       "MLP",
+      "Imitation Learning",
       "Robotics",
     ],
 
@@ -157,25 +45,26 @@ export const projects = [
 
   {
     id: "humanoid-rl",
-
-    number: "05",
+    number: "02",
 
     title: "Humanoid Locomotion",
 
     subtitle:
       "Reinforcement learning for continuous control",
 
+    period: "Aug 2024 — Dec 2024",
+
     description:
-      "A reinforcement-learning experiment exploring how a high-dimensional humanoid can learn balance and locomotion from interaction with a physics simulator.",
+      "A reinforcement-learning experiment exploring how a high-dimensional humanoid can learn balance and locomotion through interaction with a physics simulator.",
 
     problem:
-      "Humanoid locomotion requires coordinating many continuous joints while simultaneously maintaining balance and discovering a useful gait.",
+      "Humanoid locomotion requires coordinating many continuous joints while maintaining balance and discovering a stable gait.",
 
     approach:
-      "I trained PPO policies in MuJoCo Humanoid-v4 and analyzed reward, entropy, and value-loss dynamics to diagnose convergence and stability.",
+      "Trained a locomotion policy in MuJoCo Humanoid-v4 using Proximal Policy Optimization and analyzed reward, entropy, and value-loss metrics during training.",
 
     result:
-      "The trained policy developed a stable walking behavior while providing a practical study of PPO in high-dimensional continuous-control environments.",
+      "The learned policy developed stable walking behavior while providing a practical study of PPO convergence and stability in continuous-control environments.",
 
     technologies: [
       "Python",
@@ -187,5 +76,150 @@ export const projects = [
 
     image:
       "/assets/images/projects/humanoid-rl/thumbnail.webp",
+  },
+
+  {
+    id: "pacman-ai",
+    number: "03",
+
+    title: "Pacman AI",
+    links: [
+      {
+        label: "View on GitHub",
+        url: "https://github.com/Seetrax/Pacman",
+      },
+    ],
+
+    subtitle:
+      "Search, adversarial reasoning and reinforcement learning",
+
+    period: "May 2023 — Jul 2023",
+
+    description:
+      "A series of AI implementations built around the UC Berkeley Pacman environment, covering classical search, adversarial decision-making, Markov decision processes, and reinforcement learning.",
+
+    problem:
+      "Different Pacman tasks require fundamentally different decision-making strategies, ranging from deterministic pathfinding to adversarial planning and learning from interaction.",
+
+    approach:
+      "Implemented BFS, DFS, and A* with different heuristics; built adversarial agents using Minimax, Alpha-Beta pruning, and Expectiminimax; and implemented Value Iteration, Policy Iteration, and Q-learning.",
+
+    result:
+      "Applied the same reinforcement-learning ideas beyond Pacman by training a simulated crawler robot to learn locomotion behavior.",
+
+    technologies: [
+      "Python",
+      "A*",
+      "Minimax",
+      "Alpha-Beta",
+      "MDPs",
+      "Q-Learning",
+    ],
+
+    image:
+      "/assets/images/projects/pacman-ai/thumbnail.webp",
+  },
+
+  {
+    id: "interpretable-ai",
+    number: "04",
+
+    title: "Interpretable AI Models",
+
+    subtitle:
+      "Privacy and explainability in machine learning",
+
+    period: "Dec 2023 — Mar 2024",
+
+    description:
+      "Experiments exploring two different questions around trustworthy machine learning: protecting training data and understanding what learned models rely on.",
+
+    problem:
+      "Machine-learning models can expose sensitive information during training while also behaving as black boxes whose decisions are difficult to interpret.",
+
+    approach:
+      "Implemented differentially private logistic regression by injecting gamma-distributed noise into gradient updates. Separately trained a CNN image classifier and analyzed it using Shapley values and Testing with Concept Activation Vectors.",
+
+    result:
+      "The project provided hands-on implementations of both privacy-preserving learning and feature- and concept-level model interpretation.",
+
+    technologies: [
+      "Python",
+      "CNN",
+      "Differential Privacy",
+      "Shapley Values",
+      "TCAV",
+      "Machine Learning",
+    ],
+
+    image:
+      "/assets/images/projects/interpretable-ai/thumbnail.webp",
+  },
+
+  {
+    id: "quora-db",
+    number: "05",
+
+    title: "Quora 2.0",
+
+    subtitle:
+      "Relational database system",
+
+    period: "Dec 2023 — Mar 2024",
+
+    description:
+      "A PostgreSQL-backed Q&A platform modeled around interactions found in systems such as Quora and StackExchange.",
+
+    problem:
+      "The database needed to represent interconnected users, questions, answers, votes, and comments while maintaining consistency as those entities changed.",
+
+    approach:
+      "Designed normalized relational schemas using the StackExchange dataset and implemented PostgreSQL triggers, functions, and constraints for operations such as posting, voting, and commenting.",
+
+    result:
+      "Built a relational data model that automated integrity checks and application-side database behavior through PostgreSQL itself.",
+
+    technologies: [
+      "PostgreSQL",
+      "SQL",
+      "Database Design",
+      "Triggers",
+      "Functions",
+      "Constraints",
+    ],
+
+    image:
+      "/assets/images/projects/quora-db/thumbnail.webp",
+  },
+
+  {
+    id: "search-visualizer",
+    number: "06",
+
+    title: "AI Search Visualizer",
+
+    subtitle:
+      "Interactive search and constraint-solving demonstrations",
+
+    description:
+      "A collection of small interactive visualizations built to make classical AI search behavior easier to understand.",
+
+    problem:
+      "Search algorithms are straightforward to describe mathematically but their exploration behavior can be difficult to intuit from pseudocode alone.",
+
+    approach:
+      "Built a randomized maze generator and solver together with an interactive 8-Queens solver, visualizing how search and constraint-solving methods explore possible states.",
+
+    result:
+      "Turned otherwise abstract search procedures into visual demonstrations where the progression of the algorithm can be observed directly.",
+
+    technologies: [
+      "Search Algorithms",
+      "Constraint Satisfaction",
+      "Algorithm Visualization",
+    ],
+
+    image:
+      "/assets/images/projects/search-visualizer/thumbnail.webp",
   },
 ];

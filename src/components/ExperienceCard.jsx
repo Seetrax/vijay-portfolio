@@ -6,6 +6,14 @@ export default function ExperienceCard({ experience }) {
     >
 
       <header className="experience-card__header">
+        {experience.logo && (
+          <img
+            className="experience-card__logo"
+            src={`${import.meta.env.BASE_URL}${experience.logo}`}
+            alt={`${experience.company} logo`}
+            loading="lazy"
+          />
+        )}
         <div>
           <p className="experience-card__period">
             {experience.period}
