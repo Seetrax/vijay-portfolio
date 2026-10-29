@@ -83,6 +83,7 @@ export const projects = [
     number: "03",
 
     title: "Pacman AI",
+    video: "assets/images/projects/pacman/pacman.mp4",
     links: [
       {
         label: "View on GitHub",
