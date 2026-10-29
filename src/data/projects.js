@@ -4,7 +4,7 @@ export const projects = [
     number: "01",
 
     title: "Autonomous Treasure Search",
-    video: "assets/images/projects/treasure-search/navigation.mp4",
+    video: "assets/images/projects/treasure-search/visualization.mp4",
     links: [
       {
         label: "View on GitHub",
